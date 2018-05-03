@@ -20,7 +20,7 @@ int uni(int i,int j)
 
 int main()
 {
-	int min,n,i,j,cost[10][10],ne=1,v,u,a,b,visited[10]={0};
+	int min,n,i,j,cost[10][10],ne=1,v,u,a,b,visited[10]={0},total=0;
 	cout<<"Enter the no. of vertices\n";
 	cin>>n;
 	cout<<"Enter the adjacency matrix\n";
@@ -46,9 +46,11 @@ int main()
 		u=find(u);
 		v=find(v);
 		if(uni(u,v))
-		cout<<a<<"->"<<b<<"\n";
+		cout<<a<<"->"<<b<<"\t"<<min<<"\n";
 		cost[a][b]=cost[b][a]=999;
 		ne++;
+		total+=min;
 	}
+	cout<<"total "<<total;
 	return 0;
 }

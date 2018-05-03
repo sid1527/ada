@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int cost[10][10],i,j,k,n,u,v,visited[10]={0};
+int cost[10][10],i,j,k,n,u,v,a,visited[10]={0};
 
 int main()
 {
@@ -19,7 +19,6 @@ int main()
 	cout<<"Order of visited vertices\n";
 	i=1;
 	v=1;
-	cout<<v<<"\t";
 	visited[v]=1;
 	while(i<n)
 	{
@@ -27,19 +26,20 @@ int main()
 		for(k=1;k<=n;k++)
 		{
 			if(visited[k]==1)
-			v=k;
-		for(j=1;j<=n;j++)
-		if(cost[v][j]<min && visited[j]==0)
-		{
-			min=cost[v][j];
-			u=j;
+			{
+				for(j=1;j<=n;j++)
+				if(cost[k][j]<min && visited[j]==0)
+				{
+					min=cost[k][j];
+					u=j;
+					a=k;
+				}
+			}
 		}
-		}
-		cost[v][u]=cost[u][v]=999;
-		v=u;
-		cout<<v<<"\t";
+		cost[a][u]=cost[u][a]=999;
+		cout<<a<<" -> "<<u<<"\t"<<min<<"\n";
 		i++;
-		visited[v]=1;
+		visited[u]=1;
 	}
 	return 0;
 }
